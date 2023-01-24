@@ -1,4 +1,4 @@
-package shop.mtcoding.v2.repository;
+package shop.mtcoding.v2.model;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -7,4 +7,7 @@ import org.apache.ibatis.annotations.Param;
 public interface UserRepository {
     public int insert(@Param("username") String username,
             @Param("password") String password, @Param("email") String email);
+
+    public User findByUsernameAndPassword(@Param("username") String username,
+            @Param("password") String password);
 }
