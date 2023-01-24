@@ -15,7 +15,18 @@
                 <td>${product.name}</td>
                 <td>${product.price}원</td>
                 <td>${product.qty}개</td>
-                <td>${product.createdAt}</td>
+                <td>${product.createdAtToString}</td>
             </tr>
         </table>
+        <c:if test="${principal != null}">
+            <form action="/purchase/insert" method="post">
+                <input type="hidden" name="productId" value="${product.id}">
+                <select name="count">
+                    <c:forEach begin="1" end="${product.qty}" var="num">
+                        <option value="${num}">${num}</option>
+                    </c:forEach>
+                </select>
+                <button type="submit">구매</button>
+            </form>
+        </c:if>
         <%@ include file="../layout/footer.jsp" %>
